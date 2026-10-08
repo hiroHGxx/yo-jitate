@@ -121,7 +121,7 @@ NODE_PATH=../shikifuda-kasane/node_modules node scripts/build-ogp.js
 
 ### デバッグハッシュ
 
-- `#daily` … ≡ の札に「毎朝ひとりでに替えるなら」（固定URLとコピー釦）を出す。2026-09-03 から案内から外した機能（試験運用中）。仕組みは `docs/SHORTCUT.md` 乙
+- `#daily` … ≡ の札に「毎朝ひとりでに替えるなら」（固定URLとコピー釦）を出す。ふだんの画面には出していない。仕組みは `docs/SHORTCUT.md` 乙
 
 | ハッシュ | 効果 |
 |---|---|
