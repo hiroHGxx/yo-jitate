@@ -1,7 +1,7 @@
 {
- "_note": "札絵を持つ29柱の表。公式MCP kitan-lore の list_spirits（全34柱）から、札絵のある29柱ぶんを写したもの。sato/gogyo は tagline『甲賀・火』の形をそのまま割ったもの。栞・あるじどの・サスラ・トバリ・ゴコウは札絵が無いので入っていない（SPEC §3）。",
- "source": "MCP kitan-lore / list_spirits（2026-08-28取得）",
- "count": 29,
+ "_note": "札絵を持つ33柱の表。公式MCP kitan-lore の list_spirits（2026-10-09 時点で全37件）から、札絵のある33柱ぶんを写したもの。sato/gogyo は tagline『甲賀・火』の形をそのまま割ったもの。栞・あるじどの・金鬼・石舟斎は札絵が無いので入っていない（SPEC §3）。2026-10-09 にトバリ・ゴコウ・マミ・サスラを足した。",
+ "source": "MCP kitan-lore / list_spirits（2026-08-28取得・2026-10-09 に4柱を追記）",
+ "count": 33,
  "spirits": [
   {"id":"anne","name":"餡音","kana":"あんね","sato":"伊賀","gogyo":"木"},
   {"id":"atoza","name":"アトザ","kana":"あとざ","sato":"風魔","gogyo":"金"},
@@ -31,6 +31,10 @@
   {"id":"torika","name":"酉花","kana":"とりか","sato":"伊賀","gogyo":"木"},
   {"id":"uka","name":"宇迦","kana":"うか","sato":"甲賀","gogyo":"火"},
   {"id":"xiaolan","name":"シャオラン","kana":"しゃおらん","sato":"甲賀","gogyo":"土"},
-  {"id":"yui","name":"結","kana":"ゆい","sato":"伊賀","gogyo":"火"}
+  {"id":"yui","name":"結","kana":"ゆい","sato":"伊賀","gogyo":"火"},
+  {"id":"tobari","name":"トバリ","kana":"とばり","sato":"根の国","gogyo":"水"},
+  {"id":"gokou","name":"ゴコウ","kana":"ごこう","sato":"根の国","gogyo":"火"},
+  {"id":"mami","name":"マミ","kana":"まみ","sato":"雑賀","gogyo":"木"},
+  {"id":"sasura","name":"サスラ","kana":"さすら","sato":"根の国","gogyo":"金"}
  ]
 }

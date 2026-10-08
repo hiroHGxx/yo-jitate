@@ -13,11 +13,11 @@
  *   6 ≡ の札（第6便）              開く・✕・外側・Esc／中に #dailyBox・#copyUrl・#log・二次創作の明記／
  *                                  #copyUrl が従来どおり動く（clipboard を差し替えて書き込みを数える）
  *   7 押し所の実寸と文字の大きさ    ≡・名札・顔の列は44px／階梯は24px／12pxの床（SHITSURAE §2 §3）
- *   8 顔アイコン29柱が全部出る      素材蔵ではなく canon 側の別ホストから来る
+ *   8 顔アイコン33柱が全部出る      素材蔵ではなく canon 側の別ホストから来る
  *   9 札絵が4系統ぜんぶ読める        /fuda/ /fuda/v2/ /fuda/v3/ /fuda/app/ と _v2 _v3 のファイル名変種
  *  10 選び直しても canvas が汚れない  crossOrigin が効いていないと toBlob が落ちる
  *  11 連打しても最後の一枚に落ち着く  古い読み込みが後から返って上書きしないこと
- *  12 顔の列（§7.7 #2）           29柱・顔が全部出る・押し所44px以上・**縦に送れる・横にはみ出さない**
+ *  12 顔の列（§7.7 #2）           33柱・顔が全部出る・押し所44px以上・**縦に送れる・横にはみ出さない**
  *  13 深さの階梯（§7.7 #3）        10段・**01が下**・選んだ段まで満ちる・数字は1つ・**縦になぞれる**・
  *                                  なぞり1回の読み込みは1回
  *  14 開幕「顕れ」の時間割（第5便）  1200ms前は押せない／1260ms以降押せる／タップで飛ばせる／
@@ -345,7 +345,7 @@ async function main() {
       await p2.close();
     }
 
-    /* ---------- 3 顔アイコン29柱 ---------- */
+    /* ---------- 3 顔アイコン33柱 ---------- */
     console.log('\n【顔アイコン】');
     {
       const page = await browser.newPage();
@@ -369,13 +369,22 @@ async function main() {
           broken: imgs.filter(i => i.complete && i.naturalWidth === 0).map(i => i.src)
         };
       });
-      judge(icons.total === 29, '札に29柱ならんでいる', `${icons.total}柱`);
-      judge(icons.broken.length === 0 && icons.loaded === 29, '顔アイコンが29柱ぜんぶ出る',
-        `読めた ${icons.loaded}/29` + (icons.broken.length ? ' / 欠け ' + icons.broken.join(',') : ''));
+      judge(icons.total === 33, '札に33柱ならんでいる', `${icons.total}柱`);
+      judge(icons.broken.length === 0 && icons.loaded === 33, '顔アイコンが33柱ぜんぶ出る',
+        `読めた ${icons.loaded}/33` + (icons.broken.length ? ' / 欠け ' + icons.broken.join(',') : ''));
+      // 公式の顔アイコンがまだ無い4柱は、札絵から切り出した顔が据わっている（2026-10-09）
+      const cut = await page.evaluate(() => ['tobari', 'gokou', 'mami', 'sasura'].map(id => {
+        const pick = document.querySelector('#pickBody button[data-id="' + id + '"] img');
+        const strip = document.querySelector('#strip button[data-id="' + id + '"] img');
+        const ok = i => !!i && i.src.indexOf('data:image/') === 0 && i.naturalWidth === 132 && i.naturalHeight === 132;
+        return { id, ok: ok(pick) && ok(strip) };
+      }));
+      judge(cut.every(c => c.ok), '顔アイコンの無い4柱は札絵から切り出した顔が出る（札と列の両方）',
+        cut.filter(c => !c.ok).map(c => c.id).join(',') || '4柱とも 132px 角');
       await page.close();
     }
 
-    /* ---------- 7 顔の列（第5便の帯を第6便その2で縦にした・最初の画面に29柱の顔がいる） ---------- */
+    /* ---------- 7 顔の列（第5便の帯を第6便その2で縦にした・最初の画面に33柱の顔がいる） ---------- */
     console.log('\n【顔の列】');
     {
       const page = await browser.newPage();
@@ -418,9 +427,9 @@ async function main() {
           ovx: getComputedStyle(document.getElementById('strip')).overflowX
         };
       });
-      judge(m.count === 29, '列に29柱ならんでいる', `${m.count}柱`);
-      judge(m.broken.length === 0 && m.loaded === 29, '列の顔が29柱ぜんぶ出る',
-        `読めた ${m.loaded}/29` + (m.broken.length ? ' / 欠け ' + m.broken.join(',') : ''));
+      judge(m.count === 33, '列に33柱ならんでいる', `${m.count}柱`);
+      judge(m.broken.length === 0 && m.loaded === 33, '列の顔が33柱ぜんぶ出る',
+        `読めた ${m.loaded}/33` + (m.broken.length ? ' / 欠け ' + m.broken.join(',') : ''));
       judge(m.minSide >= 44, '列の押し所が44px以上', `最小 ${m.minSide.toFixed(1)}px`);
       judge(m.imgHandlers === 0, '<img> にクリックを付けていない');
       judge(m.pressed === 1, '列の選んだ印はひとつだけ', `${m.pressed}件`);
@@ -434,7 +443,7 @@ async function main() {
       // 列で選ぶと額の中が入れ替わる（札に潜らない）
       const after = await page.evaluate(async () => {
         const b = [...document.querySelectorAll('#strip button')]
-          .find(x => x.querySelector('img').src.includes('/shinra_icon.webp'));
+          .find(x => x.dataset.id === 'shinra');
         if (!b) return { err: '列に shinra が無い' };
         b.click();
         const t0 = Date.now();
@@ -554,7 +563,7 @@ async function main() {
       await page.click('#chooser');
       await page.evaluate(() => {
         [...document.querySelectorAll('#pickBody button')]
-          .find(b => b.querySelector('img').src.includes('/shinra_icon.webp')).click();
+          .find(b => b.dataset.id === 'shinra').click();
       });
       const after = await page.evaluate(() => ({
         open: document.getElementById('picker').classList.contains('show'),
@@ -591,7 +600,7 @@ async function main() {
           document.querySelector(`#pickBody button[aria-label^="${''}"]`); // noop
           // 画面の操作と同じ道で選ぶ（内部関数を叩かない）
           const btn = [...document.querySelectorAll('#pickBody button')]
-            .find(b => b.querySelector('img').src.includes('/' + id + '_icon.webp'));
+            .find(b => b.dataset.id === id);
           if (!btn) return { err: '札に ' + id + ' が無い' };
           btn.click();
           document.querySelectorAll('#depth button')[depth - 1].click();

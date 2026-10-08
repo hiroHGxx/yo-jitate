@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>夜じたて</title>
-<meta name="description" content="29柱 × 顕れの深さ10段の札絵から一枚選び、その端末の画面寸法に合わせて額装して、写真に保存します。2:3の札絵は9:19.5の画面に入りません。だから額装が要り、額装した時点で二次創作物になります。原本は配らず、額装した一枚だけを渡します。『月蝕綺譚 -Luna Occulta-』の二次創作。">
+<meta name="description" content="33柱 × 顕れの深さ10段の札絵から一枚選び、その端末の画面寸法に合わせて額装して、写真に保存します。2:3の札絵は9:19.5の画面に入りません。だから額装が要り、額装した時点で二次創作物になります。原本は配らず、額装した一枚だけを渡します。『月蝕綺譚 -Luna Occulta-』の二次創作。">
 <meta property="og:title" content="夜じたて">
-<meta property="og:description" content="札絵を一枚選び、その端末の夜に合わせて額装します。29柱 × 顕れの深さ10段。">
+<meta property="og:description" content="札絵を一枚選び、その端末の夜に合わせて額装します。33柱 × 顕れの深さ10段。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hirohgxx.github.io/yo-jitate/">
 <meta property="og:image" content="https://hirohgxx.github.io/yo-jitate/ogp.jpg?v=1">
@@ -201,7 +201,7 @@
   }
   .chooser .arrow{font-size:12px;color:var(--kindei);flex:none;font-family:"M PLUS Rounded 1c",system-ui,sans-serif}
 
-  /* 顔の列（左）。第6便その2で横の帯から**縦の列**にした。29柱を縦に流し見る。
+  /* 顔の列（左）。第6便その2で横の帯から**縦の列**にした。33柱を縦に流し見る。
      ≡（左上44px）の下から、下の面の上まで。里の境に隙間をひとつ入れて、
      並びが甲賀→伊賀→雑賀→風魔→根の国 であることを見せる。
      <img> にJSのクリックを付けず <button> で包む（SHITSURAE §2）。
@@ -222,6 +222,8 @@
     background:transparent;color:var(--ink-dim);
   }
   .strip button img{width:44px;height:44px;object-fit:contain;border-radius:4px;}
+  /* 札絵から切り出した顔（公式の顔アイコンがまだ無い柱）。透過の切り抜きでなく四角い絵なので、列の顔と同じ丸みを札の側にも付ける */
+  .strip button img.cut,.pick-grid button img.cut{border-radius:4px;}
   .strip button span{
     font-size:12px;line-height:1.25;font-family:"M PLUS Rounded 1c",system-ui,sans-serif;
     white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis;
@@ -289,7 +291,7 @@
     font-size:14px;color:var(--ink-dim);background:transparent;
     border:1px solid var(--line);border-radius:50%;
   }
-  /* 29柱ぜんぶを一度に見せると札が画面を越える。
+  /* 33柱ぜんぶを一度に見せると札が画面を越える。
      読める大きさを守って送りに倒す（SHITSURAE §6「送りに倒すか、札を縮めるか」）。 */
   .pick-body{overflow-y:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px}
   .pick-sato{
@@ -383,7 +385,7 @@
     <!-- 左上。左の列はこの下から始まる -->
     <button class="menubtn rise" id="menuBtn" aria-label="ほかの案内" aria-haspopup="dialog">≡</button>
 
-    <!-- 左の列: 顔（29柱を縦に流し見る） -->
+    <!-- 左の列: 顔（33柱を縦に流し見る） -->
     <div class="strip rise" id="strip" role="group" aria-label="御霊を選ぶ"></div>
 
     <div class="framewrap" id="framewrap">
@@ -481,7 +483,7 @@
         <button class="copy" id="copyUrl">URLをコピー</button>
         <p>
           作り方は<a href="https://github.com/hiroHGxx/yo-jitate/blob/main/docs/SHORTCUT.md">こちら</a>。
-          日付から一意に決まるので、29柱×10段を290日で一巡します。
+          日付から一意に決まるので、33柱×10段を410日で一巡します（新しく来た4柱は多めに巡ってきます）。
         </p>
       </details>
 
@@ -538,7 +540,11 @@
     {id:'karura',name:'カルラ',kana:'かるら',sato:'伊賀',gogyo:'水'},
     {id:'tart',name:'タルト',kana:'たると',sato:'甲賀',gogyo:'水'},
     {id:'magoichi',name:'孫市',kana:'まごいち',sato:'雑賀',gogyo:'火'},
-    {id:'shinra',name:'シンラ',kana:'しんら',sato:'根の国',gogyo:'土'}
+    {id:'shinra',name:'シンラ',kana:'しんら',sato:'根の国',gogyo:'土'},
+    {id:'tobari',name:'トバリ',kana:'とばり',sato:'根の国',gogyo:'水'},
+    {id:'gokou',name:'ゴコウ',kana:'ごこう',sato:'根の国',gogyo:'火'},
+    {id:'mami',name:'マミ',kana:'まみ',sato:'雑賀',gogyo:'木'},
+    {id:'sasura',name:'サスラ',kana:'さすら',sato:'根の国',gogyo:'金'}
   ];
   /* 札絵の在り処。素材蔵の台帳（scripts/fuda-ledger.json）の url をそのまま写したもの。
      径路が4系統に分かれ、ファイル名にも変種があり、同じ御霊の10枚で型が混ざる柱もある。
@@ -572,7 +578,19 @@
     karura:['v2/fuda_karura_01.webp','v2/fuda_karura_02.webp','v2/fuda_karura_03_v2.webp','v2/fuda_karura_04.webp','v2/fuda_karura_05.webp','v2/fuda_karura_06.webp','v2/fuda_karura_07.webp','v2/fuda_karura_08.webp','v2/fuda_karura_09.webp','v2/fuda_karura_10.webp'],
     tart:['v2/fuda_tart_01.webp','v2/fuda_tart_02.webp','v2/fuda_tart_03.webp','v2/fuda_tart_04.webp','v2/fuda_tart_05.webp','v2/fuda_tart_06.webp','v2/fuda_tart_07.webp','v2/fuda_tart_08.webp','v2/fuda_tart_09.webp','v2/fuda_tart_10.webp'],
     magoichi:['v2/fuda_magoichi_01.webp','v2/fuda_magoichi_02.webp','v2/fuda_magoichi_03.webp','v2/fuda_magoichi_04.webp','v2/fuda_magoichi_05.webp','v2/fuda_magoichi_06.webp','v2/fuda_magoichi_07.webp','v2/fuda_magoichi_08.webp','v2/fuda_magoichi_09.webp','v2/fuda_magoichi_10.webp'],
-    shinra:['v2/fuda_shinra_01.webp','v2/fuda_shinra_02.webp','v2/fuda_shinra_03.webp','v2/fuda_shinra_04.webp','v2/fuda_shinra_05.webp','v2/fuda_shinra_06.webp','v2/fuda_shinra_07.webp','v2/fuda_shinra_08.webp','v2/fuda_shinra_09.webp','v2/fuda_shinra_10.webp']
+    shinra:['v2/fuda_shinra_01.webp','v2/fuda_shinra_02.webp','v2/fuda_shinra_03.webp','v2/fuda_shinra_04.webp','v2/fuda_shinra_05.webp','v2/fuda_shinra_06.webp','v2/fuda_shinra_07.webp','v2/fuda_shinra_08.webp','v2/fuda_shinra_09.webp','v2/fuda_shinra_10.webp'],
+    tobari:['v2/fuda_tobari_01.webp','v2/fuda_tobari_02.webp','v2/fuda_tobari_03.webp','v2/fuda_tobari_04.webp','v2/fuda_tobari_05.webp','v2/fuda_tobari_06.webp','v2/fuda_tobari_07.webp','v2/fuda_tobari_08.webp','v2/fuda_tobari_09.webp','v2/fuda_tobari_10.webp'],
+    gokou:['v2/fuda_gokou_01.webp','v2/fuda_gokou_02.webp','v2/fuda_gokou_03.webp','v2/fuda_gokou_04.webp','v2/fuda_gokou_05.webp','v2/fuda_gokou_06.webp','v2/fuda_gokou_07.webp','v2/fuda_gokou_08.webp','v2/fuda_gokou_09.webp','v2/fuda_gokou_10.webp'],
+    mami:['v2/fuda_mami_01.webp','v2/fuda_mami_02.webp','v2/fuda_mami_03.webp','v2/fuda_mami_04.webp','v2/fuda_mami_05.webp','v2/fuda_mami_06.webp','v2/fuda_mami_07.webp','v2/fuda_mami_08.webp','v2/fuda_mami_09.webp','v2/fuda_mami_10.webp'],
+    sasura:['v2/fuda_sasura_01_v2.webp','v2/fuda_sasura_02_v2.webp','v2/fuda_sasura_03_v2.webp','v2/fuda_sasura_04_v2.webp','v2/fuda_sasura_05_v2.webp','v2/fuda_sasura_06_v2.webp','v2/fuda_sasura_07_v2.webp','v2/fuda_sasura_08_v2.webp','v2/fuda_sasura_09_v2.webp','v2/fuda_sasura_10_v2.webp']
+  };
+  /* 顔アイコンが公式にまだ無い柱。札絵から顔を切り出して代わりにする。
+     [段, 中心x, 中心y, 一辺]（x と一辺は絵の幅、y は絵の高さに対する比）。 */
+  var FACE = {
+    tobari:[10,0.47,0.205,0.27],
+    gokou:[10,0.48,0.165,0.24],
+    mami:[10,0.49,0.3,0.38],
+    sasura:[10,0.48,0.225,0.22]
   };
   /* ROSTER:END */
 
@@ -739,6 +757,39 @@
   function fudaURL(id, depth){ return KURA + FUDA[id][depth-1]; }   // 組み立てない。台帳の写しを前置するだけ
   function iconURL(id){ return ICON + id + '_icon.webp'; }
 
+  /* 顔アイコンを <img> に据える。公式の顔アイコンがある柱はそのURLを置くだけ。
+     まだ無い柱（FACE にいる柱）は、札絵から顔を切り出して代わりにする。
+     札絵は素材蔵が ACAO:* を返すので canvas が汚れず、切った絵を dataURL にできる。
+     切るのは柱ごとに一度だけ。列と札の両方の <img> に同じ絵を配る。
+     札絵が届かないときは絵を置かない（alt は空・名前は隣の span が出しているので押し所は残る）。 */
+  var faceWait = {};
+  function setIcon(img, id){
+    var f = FACE[id];
+    if (!f) {
+      img.loading = 'lazy';         // 顔アイコンは1枚90KBほど。見えているぶんだけ取る
+      img.src = iconURL(id);
+      return;
+    }
+    img.className = 'cut';
+    if (faceWait[id]) { faceWait[id].push(img); return; }
+    var wait = faceWait[id] = [img];
+    var src = new Image();
+    src.crossOrigin = 'anonymous';
+    src.onload = function(){
+      try {
+        var side = f[3] * src.naturalWidth;
+        var c = document.createElement('canvas');
+        c.width = c.height = 132;   // 44px の3倍。dpr3 の端末でも滲まない
+        c.getContext('2d').drawImage(src,
+          f[1] * src.naturalWidth - side / 2, f[2] * src.naturalHeight - side / 2, side, side,
+          0, 0, 132, 132);
+        var url = c.toDataURL('image/jpeg', 0.85);
+        wait.forEach(function(el){ el.src = url; });
+      } catch(e) {}
+    };
+    src.src = fudaURL(id, f[0]);
+  }
+
   /* ---------- ② 御霊を選ぶ札を組む ---------- */
   var pickBody = document.getElementById('pickBody');
   var pickButtons = {};
@@ -755,14 +806,14 @@
       members.forEach(function(s){
         var b = document.createElement('button');
         b.type = 'button';
+        b.dataset.id = s.id;
         b.setAttribute('aria-label', s.name + '（' + s.sato + '・' + s.gogyo + '）');
         b.setAttribute('aria-pressed', 'false');
         var img = document.createElement('img');
         img.alt = '';                 // 名前は隣の span が読む。二重に読ませない
         img.width = 44; img.height = 44;
-        img.loading = 'lazy';         // 29柱ぶんの顔アイコンは合計2.6MB。見えている札だけ取る
         img.decoding = 'async';
-        img.src = iconURL(s.id);
+        setIcon(img, s.id);
         var nm = document.createElement('span');
         nm.textContent = s.name;
         b.appendChild(img); b.appendChild(nm);
@@ -785,7 +836,7 @@
   document.getElementById('pick-close').addEventListener('click', closePicker);
   picker.addEventListener('click', function(e){ if (e.target === picker) closePicker(); });
 
-  /* ---------- ②-b 顔の列（最初の画面に29柱の顔を出す・第6便その2で縦にした） ----------
+  /* ---------- ②-b 顔の列（最初の画面に33柱の顔を出す・第6便その2で縦にした） ----------
      札（#picker）は名前で飛ぶ用、列は隣を流し見る用。役を分けて両方残す。 */
   var stripEl = document.getElementById('strip');
   var stripButtons = {};
@@ -804,14 +855,14 @@
       members.forEach(function(s){
         var b = document.createElement('button');
         b.type = 'button';
+        b.dataset.id = s.id;
         b.setAttribute('aria-label', s.name + '（' + s.sato + '・' + s.gogyo + '）');
         b.setAttribute('aria-pressed', 'false');
         var img = document.createElement('img');
         img.alt = '';                 // 名前は隣の span が読む。二重に読ませない
         img.width = 44; img.height = 44;
-        img.loading = 'lazy';         // 29柱ぶんで合計2.6MB。見えているぶんだけ取る
         img.decoding = 'async';
-        img.src = iconURL(s.id);
+        setIcon(img, s.id);
         var nm = document.createElement('span');
         nm.textContent = s.name;
         b.appendChild(img); b.appendChild(nm);

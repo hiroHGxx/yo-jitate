@@ -5,9 +5,12 @@
  *
  * 決め方:
  *   日付から一意に決める。乱数を使わない——**同じ日なら誰が焼いても同じ一枚**になる。
- *   n = その日が起点から何日目か（290で回す）
- *   御霊 = 正典の並びの n % 29 番目   ／   深さ = 1 + n % 10
- *   29 と 10 は互いに素なので、**290日で290枚ぜんぶを一度ずつ**通り、しかも毎日どちらも変わる。
+ *   n = その日が起点から何日目か（410で回す）
+ *   御霊 = 毎朝の巡り（41枠）の n % 41 番目   ／   深さ = 1 + n % 10
+ *   巡りは33柱に重みを付けたもの（scripts/build-roster.js の DAILY_SLOTS）。
+ *   新しく来た4柱（トバリ・ゴコウ・マミ・サスラ）は3枠ずつ、ほかの29柱は1枠ずつ＝29 + 4×3 = 41枠。
+ *   41 と 10 は互いに素なので、**410日で330枚ぜんぶを通り**（重み付きの柱は各段を3度）、毎日どちらも変わる。
+ *   （2026-10-08 までは 29柱を等しく290日で回していた。巡りを組み替えた日から先の並びは前と違う）
  *
  * 焼き方:
  *   画面と同じ道を通す。札から御霊を選び、帯の段を押して、canvas から書き出す。
@@ -21,7 +24,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const { CANON_ORDER, TABLE } = require('./build-roster.js');
+const { DAILY_SLOTS, TABLE } = require('./build-roster.js');
 
 const ROOT = path.join(__dirname, '..');
 const CHROME = process.env.CHROME_PATH
@@ -37,11 +40,13 @@ const SIZES = [
 /* 起点。ここから何日目かで一枚が決まる。 */
 const EPOCH = Date.UTC(2026, 7, 31);   // 2026-08-31
 
+const CYCLE = DAILY_SLOTS.length * 10;   // 41枠 × 10段
+
 function pickFor(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   const day = Math.round((Date.UTC(y, m - 1, d) - EPOCH) / 86400000);
-  const n = ((day % 290) + 290) % 290;
-  const id = CANON_ORDER[n % 29];
+  const n = ((day % CYCLE) + CYCLE) % CYCLE;
+  const id = DAILY_SLOTS[n % DAILY_SLOTS.length];
   const depth = 1 + (n % 10);
   const s = TABLE.spirits.find(x => x.id === id);
   return { day, n, id, depth, name: s ? s.name : id, sato: s ? s.sato : '', gogyo: s ? s.gogyo : '' };
@@ -61,7 +66,7 @@ async function main() {
   const outDir = process.argv[3] || path.join(ROOT, '.daily');
   const pick = pickFor(dateStr);
 
-  console.log(`${dateStr}（起点から${pick.day}日目・巡り ${pick.n}/290）`);
+  console.log(`${dateStr}（起点から${pick.day}日目・巡り ${pick.n}/${CYCLE}）`);
   console.log(`  今日の一枚: ${pick.name}（${pick.sato}・${pick.gogyo}）／ 深さ ${String(pick.depth).padStart(2, '0')}`);
 
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
@@ -90,7 +95,7 @@ async function main() {
       const dataUrl = await page.evaluate(async (id, depth) => {
         // 画面と同じ道で選ぶ
         const btn = [...document.querySelectorAll('#pickBody button')]
-          .find(b => b.querySelector('img').src.includes('/' + id + '_icon.webp'));
+          .find(b => b.dataset.id === id);
         if (!btn) throw new Error('札に ' + id + ' が無い');
         btn.click();
         document.querySelectorAll('#depth button')[depth - 1].click();
@@ -127,4 +132,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
-module.exports = { pickFor, SIZES };
+module.exports = { pickFor, SIZES, CYCLE };

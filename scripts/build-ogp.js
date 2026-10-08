@@ -5,7 +5,7 @@
  * 中身は**この道具が実際に出す絵**そのもの。宣伝用に別のものを描かない。
  * 額装した端末を3つ並べ、深さの幅（暗い・極彩色・淡い）と、選べることを一目で見せる。
  *
- * 御霊を1柱だけ出すと、それが道具の顔になってしまう（29柱いる意味が消える）。
+ * 御霊を1柱だけ出すと、それが道具の顔になってしまう（33柱いる意味が消える）。
  * だから3柱。並べたのは深さの幅を見せるためで、推しの序列ではない。
  *
  * 罠:
@@ -54,7 +54,7 @@ async function main() {
       await page.waitForFunction(() => !document.getElementById('save').disabled, { timeout: 60000 });
       const url = await page.evaluate(async (id, depth) => {
         const btn = [...document.querySelectorAll('#pickBody button')]
-          .find(b => b.querySelector('img').src.includes('/' + id + '_icon.webp'));
+          .find(b => b.dataset.id === id);
         if (!btn) throw new Error('札に ' + id + ' が無い');
         btn.click();
         document.querySelectorAll('#depth button')[depth - 1].click();
@@ -132,7 +132,7 @@ async function main() {
 
       g.fillStyle = '#9D93B5';
       g.font = '38px system-ui, sans-serif';
-      g.fillText('29柱 × 顕れの深さ10段', L, 828);
+      g.fillText('33柱 × 顕れの深さ10段', L, 828);
       g.font = '32px system-ui, sans-serif';
       g.fillText('月蝕綺譚 -Luna Occulta- 二次創作', L, 890);
 

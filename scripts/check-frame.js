@@ -91,7 +91,7 @@ async function measure(html, label) {
     // 御霊と深さを固定して、前後で同じ一枚を比べる
     await page.evaluate(async (id, depth) => {
       const btn = [...document.querySelectorAll('#pickBody button')]
-        .find(b => b.querySelector('img').src.includes('/' + id + '_icon.webp'));
+        .find(b => b.dataset.id === id);
       if (btn) btn.click();
       document.querySelectorAll('#depth button')[depth - 1].click();
       const t0 = Date.now();

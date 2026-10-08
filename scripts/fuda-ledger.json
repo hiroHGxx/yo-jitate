@@ -1,10 +1,10 @@
 {
- "_note": "公式MCP kitan-lore の list_assets(kind=fuda) の応答を転記した台帳の写し。手で編さない。URLはこの表の値をそのまま使う（径路が /fuda/ /fuda/app/ /fuda/v2/ /fuda/v3/ で混在するため、パス組み立ては禁止。SPEC §3）。作り直すときは list_assets を cursor で全6頁ぶん引き直す。",
- "source": "MCP kitan-lore / list_assets (kind=fuda, cursor 0/50/100/150/200/250)",
- "captured_at": "2026-08-28",
- "generated_at": "2026-08-23T20:54:50.149Z",
+ "_note": "公式MCP kitan-lore の list_assets(kind=fuda) の応答を転記した台帳の写し。手で編さない。URLはこの表の値をそのまま使う（径路が /fuda/ /fuda/app/ /fuda/v2/ /fuda/v3/ で混在するため、パス組み立ては禁止。SPEC §3）。作り直すときは list_assets を cursor で全頁ぶん引き直す。 2026-10-09 追記: 台帳が290→330枚に増えた（トバリ・ゴコウ・マミ・サスラの4柱×10段）。増分40枚は list_assets(kind=fuda, character=各柱) の応答を転記し、既存290枚は先頭50枚の一致だけ確かめて据え置いた。",
+ "source": "MCP kitan-lore / list_assets (kind=fuda, cursor 0/50/100/150/200/250) ／ 2026-10-09 増分: character=トバリ・ゴコウ・マミ・サスラ",
+ "captured_at": "2026-10-09",
+ "generated_at": "2026-10-06T10:33:32.101Z",
  "license": "月蝕綺譚の二次創作ガイドライン準拠。素材そのままの再配布（素材集としての転載）はNG。",
- "total": 290,
+ "total": 330,
  "chars": [
   "anne",
   "atoza",
@@ -12,6 +12,7 @@
   "benten",
   "dan",
   "emma",
+  "gokou",
   "hinanojo",
   "izuna",
   "janome",
@@ -19,6 +20,7 @@
   "karura",
   "kohaku",
   "magoichi",
+  "mami",
   "naruka",
   "nekomata",
   "nemu",
@@ -27,10 +29,12 @@
   "oto",
   "rotton",
   "sakuya",
+  "sasura",
   "shiba",
   "shinra",
   "shion",
   "tart",
+  "tobari",
   "torika",
   "uka",
   "xiaolan",
@@ -2066,6 +2070,286 @@
    "rank": 10,
    "bytes": 303026,
    "url": "https://kura.vibe.co.jp/fuda/app/fuda_sakuya_10.webp"
+  },
+  {
+   "id": "fuda_tobari_01",
+   "char": "tobari",
+   "rank": 1,
+   "bytes": 116712,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_01.webp"
+  },
+  {
+   "id": "fuda_tobari_02",
+   "char": "tobari",
+   "rank": 2,
+   "bytes": 131244,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_02.webp"
+  },
+  {
+   "id": "fuda_tobari_03",
+   "char": "tobari",
+   "rank": 3,
+   "bytes": 175414,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_03.webp"
+  },
+  {
+   "id": "fuda_tobari_04",
+   "char": "tobari",
+   "rank": 4,
+   "bytes": 189356,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_04.webp"
+  },
+  {
+   "id": "fuda_tobari_05",
+   "char": "tobari",
+   "rank": 5,
+   "bytes": 151682,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_05.webp"
+  },
+  {
+   "id": "fuda_tobari_06",
+   "char": "tobari",
+   "rank": 6,
+   "bytes": 98700,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_06.webp"
+  },
+  {
+   "id": "fuda_tobari_07",
+   "char": "tobari",
+   "rank": 7,
+   "bytes": 134566,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_07.webp"
+  },
+  {
+   "id": "fuda_tobari_08",
+   "char": "tobari",
+   "rank": 8,
+   "bytes": 141916,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_08.webp"
+  },
+  {
+   "id": "fuda_tobari_09",
+   "char": "tobari",
+   "rank": 9,
+   "bytes": 127608,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_09.webp"
+  },
+  {
+   "id": "fuda_tobari_10",
+   "char": "tobari",
+   "rank": 10,
+   "bytes": 122796,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_tobari_10.webp"
+  },
+  {
+   "id": "fuda_gokou_01",
+   "char": "gokou",
+   "rank": 1,
+   "bytes": 129206,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_01.webp"
+  },
+  {
+   "id": "fuda_gokou_02",
+   "char": "gokou",
+   "rank": 2,
+   "bytes": 167450,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_02.webp"
+  },
+  {
+   "id": "fuda_gokou_03",
+   "char": "gokou",
+   "rank": 3,
+   "bytes": 114342,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_03.webp"
+  },
+  {
+   "id": "fuda_gokou_04",
+   "char": "gokou",
+   "rank": 4,
+   "bytes": 263624,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_04.webp"
+  },
+  {
+   "id": "fuda_gokou_05",
+   "char": "gokou",
+   "rank": 5,
+   "bytes": 218132,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_05.webp"
+  },
+  {
+   "id": "fuda_gokou_06",
+   "char": "gokou",
+   "rank": 6,
+   "bytes": 139312,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_06.webp"
+  },
+  {
+   "id": "fuda_gokou_07",
+   "char": "gokou",
+   "rank": 7,
+   "bytes": 131394,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_07.webp"
+  },
+  {
+   "id": "fuda_gokou_08",
+   "char": "gokou",
+   "rank": 8,
+   "bytes": 146302,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_08.webp"
+  },
+  {
+   "id": "fuda_gokou_09",
+   "char": "gokou",
+   "rank": 9,
+   "bytes": 130774,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_09.webp"
+  },
+  {
+   "id": "fuda_gokou_10",
+   "char": "gokou",
+   "rank": 10,
+   "bytes": 146890,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_gokou_10.webp"
+  },
+  {
+   "id": "fuda_mami_01",
+   "char": "mami",
+   "rank": 1,
+   "bytes": 199802,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_01.webp"
+  },
+  {
+   "id": "fuda_mami_02",
+   "char": "mami",
+   "rank": 2,
+   "bytes": 175552,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_02.webp"
+  },
+  {
+   "id": "fuda_mami_03",
+   "char": "mami",
+   "rank": 3,
+   "bytes": 269286,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_03.webp"
+  },
+  {
+   "id": "fuda_mami_04",
+   "char": "mami",
+   "rank": 4,
+   "bytes": 318448,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_04.webp"
+  },
+  {
+   "id": "fuda_mami_05",
+   "char": "mami",
+   "rank": 5,
+   "bytes": 214586,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_05.webp"
+  },
+  {
+   "id": "fuda_mami_06",
+   "char": "mami",
+   "rank": 6,
+   "bytes": 178238,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_06.webp"
+  },
+  {
+   "id": "fuda_mami_07",
+   "char": "mami",
+   "rank": 7,
+   "bytes": 186116,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_07.webp"
+  },
+  {
+   "id": "fuda_mami_08",
+   "char": "mami",
+   "rank": 8,
+   "bytes": 166806,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_08.webp"
+  },
+  {
+   "id": "fuda_mami_09",
+   "char": "mami",
+   "rank": 9,
+   "bytes": 219638,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_09.webp"
+  },
+  {
+   "id": "fuda_mami_10",
+   "char": "mami",
+   "rank": 10,
+   "bytes": 214020,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_mami_10.webp"
+  },
+  {
+   "id": "fuda_sasura_01_v2",
+   "char": "sasura",
+   "rank": 1,
+   "bytes": 121052,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_01_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_02_v2",
+   "char": "sasura",
+   "rank": 2,
+   "bytes": 169590,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_02_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_03_v2",
+   "char": "sasura",
+   "rank": 3,
+   "bytes": 126944,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_03_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_04_v2",
+   "char": "sasura",
+   "rank": 4,
+   "bytes": 156320,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_04_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_05_v2",
+   "char": "sasura",
+   "rank": 5,
+   "bytes": 175758,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_05_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_06_v2",
+   "char": "sasura",
+   "rank": 6,
+   "bytes": 150520,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_06_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_07_v2",
+   "char": "sasura",
+   "rank": 7,
+   "bytes": 138684,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_07_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_08_v2",
+   "char": "sasura",
+   "rank": 8,
+   "bytes": 168416,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_08_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_09_v2",
+   "char": "sasura",
+   "rank": 9,
+   "bytes": 137072,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_09_v2.webp"
+  },
+  {
+   "id": "fuda_sasura_10_v2",
+   "char": "sasura",
+   "rank": 10,
+   "bytes": 194612,
+   "url": "https://kura.vibe.co.jp/fuda/v2/fuda_sasura_10_v2.webp"
   }
  ]
 }
