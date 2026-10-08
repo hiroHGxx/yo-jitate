@@ -1,3 +1,5 @@
 .DS_Store
 .frame-check/
 .daily/
+scripts/pv/src/
+scripts/pv/out/
