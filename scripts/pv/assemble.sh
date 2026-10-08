@@ -5,9 +5,9 @@
 # 先に流すもの:
 #   NODE_PATH=../shikifuda-kasane/node_modules node scripts/pv/capture-pv.js   … 画面の録り（src/cap/）
 #   NODE_PATH=../shikifuda-kasane/node_modules node scripts/pv/make-cards.js   … 開きと締めのカード（src/*.png）
-#   src/bgm.mp3 … 公式の楽曲『Punto di fuga』（サスラのテーマソング A面）を手元に置く（リポジトリには入れない）
-#     https://vibe.co.jp/luna-occulta/media/music/punto_di_fuga.mp3
-#     （最初は『かえりみちの唄 (Instrumental)』で組んだ。2026-10-09 オーナー裁定でサスラのテーマへ）
+#   src/bgm.mp3 … 公式の楽曲『まつげの距離』（サスラのテーマソング B面）を手元に置く（リポジトリには入れない）
+#     https://vibe.co.jp/luna-occulta/media/music/matsuge_no_kyori.mp3
+#     （『かえりみちの唄 (Instrumental)』→ A面『Punto di fuga』→ B面。2026-10-09 オーナー裁定）
 #
 # 構成: 開きのカード 1.9秒 → 画面の録り（開幕 → マミが01から10へ顕れる → トバリ・ゴコウ・サスラ）→ 締めのカード 3.4秒
 # つなぎは 0.4秒の溶かし。曲は頭の無音を飛ばして最初の音から敷き、終わりへ 1.8秒で沈める。
